@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\CookiesBot.exe
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\CookiesBot.deps.json
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\CookiesBot.runtimeconfig.json
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\CookiesBot.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\CookiesBot.pdb
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.AssemblyInfo.cs
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\refint\CookiesBot.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.pdb
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.genruntimeconfig.cache
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\ref\CookiesBot.dll

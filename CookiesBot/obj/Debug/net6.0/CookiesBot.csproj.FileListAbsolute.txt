@@ -13,3 +13,9 @@ C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\refint\Cookies
 C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.pdb
 C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.genruntimeconfig.cache
 C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\ref\CookiesBot.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\Telegram.BotAPI.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.csproj.CopyComplete

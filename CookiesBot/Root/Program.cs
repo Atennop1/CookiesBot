@@ -1,4 +1,4 @@
-﻿namespace CookiesBot
+﻿namespace CookiesBot.Root
 {
     public sealed class Program
     {

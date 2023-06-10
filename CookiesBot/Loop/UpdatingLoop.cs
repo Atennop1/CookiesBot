@@ -6,9 +6,13 @@ namespace CookiesBot.Loop
     public sealed class UpdatingLoop : IUpdatingLoop
     {
         private readonly BotClient _client;
+        private readonly List<ILoopObject> _loopObjects;
 
-        public UpdatingLoop(BotClient client) 
-            => _client = client ?? throw new ArgumentNullException(nameof(client));
+        public UpdatingLoop(BotClient client, List<ILoopObject> loopObjects)
+        {
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _loopObjects = loopObjects ?? throw new ArgumentNullException(nameof(loopObjects));
+        }
 
         public void Start()
         {
@@ -24,7 +28,15 @@ namespace CookiesBot.Loop
                 
                 foreach (var update in updates)
                 {
-                    //there will be logic of updates handling
+                    var updateInfo = new LibraryUpdateInfoAdapter(update);
+                    
+                    foreach (var loopObject in _loopObjects)
+                    {
+                        if (loopObject.RequiredUpdateType != update.Type || !loopObject.CanGetUpdate(updateInfo)) 
+                            continue;
+                        
+                        loopObject.GetUpdate(updateInfo);
+                    }
                 }
 
                 var offset = updates.Last().UpdateId + 1;

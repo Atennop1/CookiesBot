@@ -9,7 +9,12 @@ namespace CookiesBot.Root
             var clientFactory = new TelegramClientFactory();
             var client = clientFactory.Create();
 
-            var updatingCycle = new UpdatingLoop(client);
+            var loopObjects = new List<ILoopObject>()
+            {
+
+            };
+            
+            var updatingCycle = new UpdatingLoop(client, loopObjects);
             updatingCycle.Start();
         }
     }

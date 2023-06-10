@@ -3,11 +3,11 @@ using Telegram.BotAPI.GettingUpdates;
 
 namespace CookiesBot.Loop
 {
-    public sealed class UpdatingCycle : IUpdatingCycle
+    public sealed class UpdatingLoop : IUpdatingLoop
     {
         private readonly BotClient _client;
 
-        public UpdatingCycle(BotClient client) 
+        public UpdatingLoop(BotClient client) 
             => _client = client ?? throw new ArgumentNullException(nameof(client));
 
         public void Start()

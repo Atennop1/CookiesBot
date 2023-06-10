@@ -4,8 +4,8 @@
     {
         public static void Main(string[] args)
         {
-            var bot = new Bot();
-            bot.Start();
+            var application = new Application();
+            application.Start();
         }
     }
 }

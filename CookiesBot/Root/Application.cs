@@ -2,14 +2,14 @@
 
 namespace CookiesBot.Root
 {
-    public sealed class Bot
+    public sealed class Application
     {
         public void Start()
         {
-            var clientFactory = new BotClientFactory();
+            var clientFactory = new TelegramClientFactory();
             var client = clientFactory.Create();
 
-            var updatingCycle = new UpdatingCycle(client);
+            var updatingCycle = new UpdatingLoop(client);
             updatingCycle.Start();
         }
     }

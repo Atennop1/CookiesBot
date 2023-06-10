@@ -6,15 +6,15 @@ namespace CookiesBot.Loop
     public sealed class UpdatingLoop : IUpdatingLoop
     {
         private readonly BotClient _client;
-        private readonly List<ILoopObject> _loopObjects;
+        private readonly IUsersLoopObjects _usersLoopObjects;
 
-        public UpdatingLoop(BotClient client, List<ILoopObject> loopObjects)
+        public UpdatingLoop(BotClient client, IUsersLoopObjects usersLoopObjects)
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
-            _loopObjects = loopObjects ?? throw new ArgumentNullException(nameof(loopObjects));
+            _usersLoopObjects = usersLoopObjects ?? throw new ArgumentNullException(nameof(usersLoopObjects));
         }
 
-        public void Start()
+        public void Activate()
         {
             var updates = _client.GetUpdates();
 
@@ -29,8 +29,11 @@ namespace CookiesBot.Loop
                 foreach (var update in updates)
                 {
                     var updateInfo = new LibraryUpdateInfoAdapter(update);
-                    
-                    foreach (var loopObject in _loopObjects)
+                   
+                    if (!_usersLoopObjects.IsLoopObjectsForUserExist(update))
+                        _usersLoopObjects.CreateLoopObjectsForNewUser(update);
+
+                    foreach (var loopObject in _usersLoopObjects.GetLoopObjectsOfUser(update))
                     {
                         if (loopObject.RequiredUpdateType != update.Type || !loopObject.CanGetUpdate(updateInfo)) 
                             continue;

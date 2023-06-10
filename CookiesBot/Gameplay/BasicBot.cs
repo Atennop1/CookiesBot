@@ -16,7 +16,7 @@ namespace CookiesBot.Gameplay
             if (updateInfo == null)
                 throw new ArgumentNullException(nameof(updateInfo));
             
-            _telegram.SendMessage("Привет! Я - бот с печеньками!", updateInfo.Message.Chat.Id);
+            _telegram.SendMessage("Привет! Я - бот с печеньками!", (long)updateInfo.Message?.Chat.Id!);
         }
 
         public UpdateType RequiredUpdateType 

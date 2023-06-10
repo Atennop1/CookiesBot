@@ -1,4 +1,5 @@
-﻿using CookiesBot.Loop;
+﻿using CookiesBot.Gameplay;
+using CookiesBot.Loop;
 
 namespace CookiesBot.Root
 {
@@ -8,10 +9,11 @@ namespace CookiesBot.Root
         {
             var clientFactory = new TelegramClientFactory();
             var client = clientFactory.Create();
+            var telegram = new Telegram.Telegram(client);
 
-            var loopObjects = new List<ILoopObject>()
+            var loopObjects = new List<ILoopObject>
             {
-
+                new BasicBot(telegram)
             };
             
             var updatingCycle = new UpdatingLoop(client, loopObjects);

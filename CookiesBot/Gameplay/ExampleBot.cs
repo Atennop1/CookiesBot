@@ -1,14 +1,15 @@
 ﻿using CookiesBot.Loop;
 using CookiesBot.Telegram;
+using CookiesBot.Tools;
 using Telegram.BotAPI;
 
 namespace CookiesBot.Gameplay
 {
-    public sealed class BasicBot : ILoopObject
+    public sealed class ExampleBot : ILoopObject
     {
         private readonly ITelegram _telegram;
 
-        public BasicBot(ITelegram telegram) 
+        public ExampleBot(ITelegram telegram) 
             => _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
 
         public void GetUpdate(IUpdateInfo updateInfo)
@@ -23,6 +24,6 @@ namespace CookiesBot.Gameplay
             => UpdateType.Message;
         
         public bool CanGetUpdate(IUpdateInfo updateInfo)
-            => true;
+            => updateInfo.Message.Text.IsCommand("/start");
     }
 }

@@ -15,7 +15,7 @@ namespace CookiesBot.Core
         {
             var loopObjects = new List<ILoopObject>
             {
-                new BasicBot(_telegram)
+                new ExampleBot(_telegram)
             };
 
             return loopObjects;

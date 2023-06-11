@@ -2,6 +2,7 @@
 using CookiesBot.Telegram;
 using CookiesBot.Tools;
 using Telegram.BotAPI;
+using Telegram.BotAPI.AvailableTypes;
 
 namespace CookiesBot.Gameplay
 {
@@ -16,14 +17,19 @@ namespace CookiesBot.Gameplay
         {
             if (updateInfo == null)
                 throw new ArgumentNullException(nameof(updateInfo));
+
+            var inlineKeyboardMarkup = new InlineKeyboardMarkup(new[]
+            {
+                InlineButtonBuilder.SetCallbackData("Кнопка!", "send: Ты нажал на кнопку!")
+            });
             
-            _telegram.SendMessage("Привет! Я - бот с печеньками!", (long)updateInfo.Message?.Chat.Id!);
+            _telegram.SendMessage("Привет! Я - бот с печеньками!", (long)updateInfo.Message?.Chat.Id!, inlineKeyboardMarkup);
         }
 
         public UpdateType RequiredUpdateType 
             => UpdateType.Message;
         
         public bool CanGetUpdate(IUpdateInfo updateInfo)
-            => updateInfo.Message.Text.IsCommand("/start");
+            => updateInfo.Message!.Text!.IsCommand("/start");
     }
 }

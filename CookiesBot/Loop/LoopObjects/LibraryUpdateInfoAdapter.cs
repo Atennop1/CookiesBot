@@ -18,10 +18,7 @@ namespace CookiesBot.Loop
         public Message? Message 
             => _update.Message;
         
-        public InlineQuery? InlineQuery 
-            => _update.InlineQuery;
-        
-        public ChosenInlineResult? ChosenInlineResult 
-            => _update.ChosenInlineResult;
+        public CallbackQuery? CallbackQuery 
+            => _update.CallbackQuery;
     }
 }

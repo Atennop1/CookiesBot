@@ -1,6 +1,5 @@
 ﻿using Telegram.BotAPI;
 using Telegram.BotAPI.AvailableTypes;
-using Telegram.BotAPI.InlineMode;
 
 namespace CookiesBot.Loop
 {
@@ -8,8 +7,6 @@ namespace CookiesBot.Loop
     {
         UpdateType Type { get; }
         Message? Message { get; }
-        
-        InlineQuery? InlineQuery { get; }
-        ChosenInlineResult? ChosenInlineResult { get; }
+        CallbackQuery? CallbackQuery { get; }
     }
 }

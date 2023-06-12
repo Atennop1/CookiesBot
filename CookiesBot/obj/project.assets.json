@@ -15,6 +15,27 @@
           }
         }
       },
+      "NuGet.Build.Tasks.Pack/5.2.0": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildCrossTargeting/_._": {}
+        }
+      },
+      "RelationalDatabasesViaOOP/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "NuGet.Build.Tasks.Pack": "5.2.0"
+        },
+        "compile": {
+          "lib/net472/RelationalDatabasesViaOOP.dll": {}
+        },
+        "runtime": {
+          "lib/net472/RelationalDatabasesViaOOP.dll": {}
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
@@ -124,6 +145,35 @@
         "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "NuGet.Build.Tasks.Pack/5.2.0": {
+      "sha512": "jRE2Ya2cFTEu9XZ6rQtYjKE1a8q2KjCs0b8bd3cGlZ1cdgfZ6EgR2X0LZ/pCbN2WVcCRI7ISEIcqJ5Ji+Z1HMQ==",
+      "type": "package",
+      "path": "nuget.build.tasks.pack/5.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CoreCLR/NuGet.Build.Tasks.Pack.dll",
+        "CoreCLR/NuGet.Build.Tasks.Pack.xml",
+        "Desktop/NuGet.Build.Tasks.Pack.dll",
+        "Desktop/NuGet.Build.Tasks.Pack.xml",
+        "build/NuGet.Build.Tasks.Pack.targets",
+        "buildCrossTargeting/NuGet.Build.Tasks.Pack.targets",
+        "nuget.build.tasks.pack.5.2.0.nupkg.sha512",
+        "nuget.build.tasks.pack.nuspec"
+      ]
+    },
+    "RelationalDatabasesViaOOP/1.1.0": {
+      "sha512": "3p23XnKI61A2cgOf4VRsCQnVPZriDwsmoc9HVCx/39n764NhaC0JlbEn9tad5fvKVM5gQPkWVFlrek5BymiJug==",
+      "type": "package",
+      "path": "relationaldatabasesviaoop/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net472/RelationalDatabasesViaOOP.dll",
+        "relationaldatabasesviaoop.1.1.0.nupkg.sha512",
+        "relationaldatabasesviaoop.nuspec"
       ]
     },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
@@ -272,6 +322,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "RelationalDatabasesViaOOP >= 1.1.0",
       "Telegram.BotAPI >= 6.7.2"
     ]
   },
@@ -319,6 +370,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "RelationalDatabasesViaOOP": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "Telegram.BotAPI": {
             "target": "Package",
             "version": "[6.7.2, )"
@@ -343,5 +398,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'RelationalDatabasesViaOOP 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "RelationalDatabasesViaOOP",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

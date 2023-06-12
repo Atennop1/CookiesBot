@@ -11,7 +11,8 @@ namespace CookiesBot.Core
             var telegram = new Telegram.Telegram(client);
             
             var loopObjectsFactory = new LoopObjectsFactory(telegram);
-            var usersLoopObjectsFactory = new UsersLoopObjectsFactory(loopObjectsFactory);
+            var databaseFactory = new RelationalDatabaseFactory();
+            var usersLoopObjectsFactory = new UsersLoopObjectsFactory(loopObjectsFactory, databaseFactory);
             var usersLoopObjects = usersLoopObjectsFactory.Create();
             
             var updatingCycle = new UpdatingLoop(client, usersLoopObjects);

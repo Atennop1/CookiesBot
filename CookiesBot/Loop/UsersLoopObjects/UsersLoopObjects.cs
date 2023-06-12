@@ -34,11 +34,14 @@ namespace CookiesBot.Loop
         
         public void CreateLoopObjectsForNewUser(Update update)
         {
-            if (update.Type == UpdateType.Message && !_usersLoopObjects.ContainsKey((long)update.Message?.Chat.Id!))
-                _usersLoopObjects.Add(update.Message.Chat.Id, _loopObjectsFactory.Create());
+            if (IsLoopObjectsForUserExist(update))
+                throw new InvalidOperationException("Loop objects for this user already exist");
             
-            if (update.Type == UpdateType.CallbackQuery && !_usersLoopObjects.ContainsKey((long)update.CallbackQuery?.From.Id!))
-                _usersLoopObjects.Add(update.CallbackQuery.From.Id, _loopObjectsFactory.Create());
+            if (update.Type == UpdateType.Message)
+                _usersLoopObjects.Add(update.Message!.Chat.Id, _loopObjectsFactory.Create());
+            
+            if (update.Type == UpdateType.CallbackQuery)
+                _usersLoopObjects.Add(update.CallbackQuery!.From.Id, _loopObjectsFactory.Create());
         }
     }
 }

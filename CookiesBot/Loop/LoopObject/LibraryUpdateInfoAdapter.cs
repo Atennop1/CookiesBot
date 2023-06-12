@@ -1,7 +1,6 @@
 ﻿using Telegram.BotAPI;
 using Telegram.BotAPI.AvailableTypes;
 using Telegram.BotAPI.GettingUpdates;
-using Telegram.BotAPI.InlineMode;
 
 namespace CookiesBot.Loop
 {

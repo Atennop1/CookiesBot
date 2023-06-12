@@ -19,3 +19,6 @@ C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\System.Text.Js
 C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\Telegram.BotAPI.dll
 C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\User\source\repos\CookiesBot\CookiesBot\obj\Debug\net6.0\CookiesBot.csproj.CopyComplete
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\RelationalDatabasesViaOOP.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\source\repos\CookiesBot\CookiesBot\bin\Debug\net6.0\Npgsql.dll

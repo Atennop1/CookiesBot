@@ -20,7 +20,7 @@ namespace CookiesBot.Gameplay
 
             var inlineKeyboardMarkup = new InlineKeyboardMarkup(new[]
             {
-                InlineButtonBuilder.SetCallbackData("Посмотреть баланс", "send_balance")
+                InlineButtonBuilder.SetCallbackData("Посмотреть баланс", "balance")
             });
             
             _telegram.SendMessage("Привет! Я - бот с печеньками!\nТы можешь посмотреть баланс, нажав на кнопку ниже", (long)updateInfo.Message?.Chat.Id!, inlineKeyboardMarkup);

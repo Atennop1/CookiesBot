@@ -36,7 +36,7 @@ namespace CookiesBot.Gameplay
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 
-            => (updateInfo.Type == TypeOfUpdate.ButtonCallback && updateInfo.CallbackQuery!.Data! == "send_balance") ||
-               (updateInfo.Type == TypeOfUpdate.Message && updateInfo.Message!.Text!.IsCommand("/sendBalance"));
+            => (updateInfo.Type == TypeOfUpdate.ButtonCallback && updateInfo.CallbackQuery!.Data! == "balance") ||
+               (updateInfo.Type == TypeOfUpdate.Message && updateInfo.Message!.Text!.IsCommand("/balance"));
     }
 }

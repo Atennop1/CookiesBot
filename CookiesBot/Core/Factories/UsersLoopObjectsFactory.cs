@@ -1,25 +1,25 @@
 ﻿using System.Data;
 using CookiesBot.Loop;
+using RelationalDatabasesViaOOP;
 
 namespace CookiesBot.Core
 {
     public sealed class UsersLoopObjectsFactory : IUsersLoopObjectsFactory
     {
         private readonly ILoopObjectsFactory _loopObjectsFactory;
-        private readonly IDatabaseFactory _databaseFactory;
+        private readonly IDatabase _database;
 
-        public UsersLoopObjectsFactory(ILoopObjectsFactory loopObjectsFactory, IDatabaseFactory databaseFactory)
+        public UsersLoopObjectsFactory(ILoopObjectsFactory loopObjectsFactory, IDatabase database)
         {
             _loopObjectsFactory = loopObjectsFactory ?? throw new ArgumentNullException(nameof(loopObjectsFactory));
-            _databaseFactory = databaseFactory ?? throw new ArgumentNullException(nameof(databaseFactory));
+            _database = database ?? throw new ArgumentNullException(nameof(database));
         }
 
         public IUsersLoopObjects Create()
         {
-            var database = _databaseFactory.Create();
             var usersDictionary = new Dictionary<long, List<ILoopObject>>();
             
-            var users = database.SendReaderRequest("SELECT user_id FROM users");
+            var users = _database.SendReaderRequest("SELECT user_id FROM users");
             var usersTable = new DataTable();
             usersTable.Load(users);
 
@@ -27,7 +27,7 @@ namespace CookiesBot.Core
                 usersDictionary.Add((long)usersTable.Rows[i]["user_id"], _loopObjectsFactory.Create());
 
             var usersLoopObjects = new UsersLoopObjects(_loopObjectsFactory, usersDictionary);
-            var usersLoopObjectsWithSaving = new UsersLoopObjectsWithSaving(usersLoopObjects, database);
+            var usersLoopObjectsWithSaving = new UsersLoopObjectsWithSaving(usersLoopObjects, _database);
             return usersLoopObjectsWithSaving;
         }
     }

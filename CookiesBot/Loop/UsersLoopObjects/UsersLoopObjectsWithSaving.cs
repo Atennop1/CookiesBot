@@ -1,7 +1,4 @@
 ﻿using RelationalDatabasesViaOOP;
-using Telegram.BotAPI;
-using Telegram.BotAPI.GettingUpdates;
-
 namespace CookiesBot.Loop
 {
     public sealed class UsersLoopObjectsWithSaving : IUsersLoopObjects
@@ -15,23 +12,23 @@ namespace CookiesBot.Loop
             _database = database ?? throw new ArgumentNullException(nameof(database));
         }
 
-        public bool IsLoopObjectsForUserExist(Update update)
-            => _usersLoopObjects.IsLoopObjectsForUserExist(update);
+        public bool IsLoopObjectsForUserExist(IUpdateInfo updateInfo)
+            => _usersLoopObjects.IsLoopObjectsForUserExist(updateInfo);
 
-        public List<ILoopObject> GetLoopObjectsOfUser(Update update)
-            => _usersLoopObjects.GetLoopObjectsOfUser(update);
+        public List<ILoopObject> GetLoopObjectsOfUser(IUpdateInfo updateInfo)
+            => _usersLoopObjects.GetLoopObjectsOfUser(updateInfo);
 
-        public void CreateLoopObjectsForNewUser(Update update)
+        public void CreateLoopObjectsForNewUser(IUpdateInfo updateInfo)
         {
-            var userId = update.Type switch
+            var userId = updateInfo.Type switch
             {
-                UpdateType.Message => update.Message!.Chat.Id,
-                UpdateType.CallbackQuery => update.CallbackQuery!.From.Id,
+                TypeOfUpdate.Message => updateInfo.Message!.Chat.Id,
+                TypeOfUpdate.ButtonCallback => updateInfo.CallbackQuery!.From.Id,
                 _ => 0L
             };
 
             _database.SendNonQueryRequest($"INSERT INTO users (user_id) VALUES ({userId})");
-            _usersLoopObjects.CreateLoopObjectsForNewUser(update);
+            _usersLoopObjects.CreateLoopObjectsForNewUser(updateInfo);
         }
     }
 }

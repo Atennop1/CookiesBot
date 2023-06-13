@@ -1,6 +1,4 @@
 ﻿using CookiesBot.Core;
-using Telegram.BotAPI;
-using Telegram.BotAPI.GettingUpdates;
 
 namespace CookiesBot.Loop
 {
@@ -15,33 +13,33 @@ namespace CookiesBot.Loop
             _usersLoopObjects = usersLoopObjects ?? throw new ArgumentNullException(nameof(usersLoopObjects));
         }
 
-        public bool IsLoopObjectsForUserExist(Update update)
+        public bool IsLoopObjectsForUserExist(IUpdateInfo updateInfo)
         {
-            return (update.Type == UpdateType.Message && _usersLoopObjects.ContainsKey((long)update.Message?.Chat.Id!)) ||
-                (update.Type == UpdateType.CallbackQuery && _usersLoopObjects.ContainsKey((long)update.CallbackQuery?.From.Id!));
+            return (updateInfo.Type == TypeOfUpdate.Message && _usersLoopObjects.ContainsKey((long)updateInfo.Message?.Chat.Id!)) ||
+                (updateInfo.Type == TypeOfUpdate.ButtonCallback && _usersLoopObjects.ContainsKey((long)updateInfo.CallbackQuery?.From.Id!));
         }
         
-        public List<ILoopObject> GetLoopObjectsOfUser(Update update)
+        public List<ILoopObject> GetLoopObjectsOfUser(IUpdateInfo updateInfo)
         {
-            if (!IsLoopObjectsForUserExist(update))
+            if (!IsLoopObjectsForUserExist(updateInfo))
                 throw new InvalidOperationException("Loop objects does not exist for user");
             
-            if (update.Type == UpdateType.Message && _usersLoopObjects.ContainsKey((long)update.Message?.Chat.Id!))
-                return _usersLoopObjects[update.Message.Chat.Id];
+            if (updateInfo.Type == TypeOfUpdate.Message && _usersLoopObjects.ContainsKey((long)updateInfo.Message?.Chat.Id!))
+                return _usersLoopObjects[updateInfo.Message.Chat.Id];
             
-            return _usersLoopObjects[(long)update.CallbackQuery?.From.Id!];
+            return _usersLoopObjects[(long)updateInfo.CallbackQuery?.From.Id!];
         }
         
-        public void CreateLoopObjectsForNewUser(Update update)
+        public void CreateLoopObjectsForNewUser(IUpdateInfo updateInfo)
         {
-            if (IsLoopObjectsForUserExist(update))
+            if (IsLoopObjectsForUserExist(updateInfo))
                 throw new InvalidOperationException("Loop objects for this user already exist");
             
-            if (update.Type == UpdateType.Message)
-                _usersLoopObjects.Add(update.Message!.Chat.Id, _loopObjectsFactory.Create());
+            if (updateInfo.Type == TypeOfUpdate.Message)
+                _usersLoopObjects.Add(updateInfo.Message!.Chat.Id, _loopObjectsFactory.Create());
             
-            if (update.Type == UpdateType.CallbackQuery)
-                _usersLoopObjects.Add(update.CallbackQuery!.From.Id, _loopObjectsFactory.Create());
+            if (updateInfo.Type == TypeOfUpdate.ButtonCallback)
+                _usersLoopObjects.Add(updateInfo.CallbackQuery!.From.Id, _loopObjectsFactory.Create());
         }
     }
 }

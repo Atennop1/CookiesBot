@@ -1,10 +1,8 @@
-﻿using Telegram.BotAPI;
-
-namespace CookiesBot.Loop
+﻿namespace CookiesBot.Loop
 {
     public interface ILoopObject
     {
-        UpdateType RequiredUpdateType { get; }
+        TypeOfUpdate RequiredTypeOfUpdate { get; }
         
         void GetUpdate(IUpdateInfo updateInfo);
         bool CanGetUpdate(IUpdateInfo updateInfo);

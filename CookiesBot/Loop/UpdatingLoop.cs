@@ -1,4 +1,5 @@
-﻿using Telegram.BotAPI;
+﻿using CookiesBot.Tools;
+using Telegram.BotAPI;
 using Telegram.BotAPI.GettingUpdates;
 
 namespace CookiesBot.Loop
@@ -30,15 +31,16 @@ namespace CookiesBot.Loop
                 {
                     var updateInfo = new LibraryUpdateInfoAdapter(update);
                    
-                    if (!_usersLoopObjects.IsLoopObjectsForUserExist(update))
-                        _usersLoopObjects.CreateLoopObjectsForNewUser(update);
+                    if (!_usersLoopObjects.IsLoopObjectsForUserExist(updateInfo))
+                        _usersLoopObjects.CreateLoopObjectsForNewUser(updateInfo);
 
-                    foreach (var loopObject in _usersLoopObjects.GetLoopObjectsOfUser(update))
+                    foreach (var loopObject in _usersLoopObjects.GetLoopObjectsOfUser(updateInfo))
                     {
-                        if (loopObject.RequiredUpdateType != update.Type || !loopObject.CanGetUpdate(updateInfo)) 
+                        if (!loopObject.RequiredTypeOfUpdate.HasFlag(updateInfo.Type) || !loopObject.CanGetUpdate(updateInfo)) 
                             continue;
                         
                         loopObject.GetUpdate(updateInfo);
+                        break;
                     }
                 }
 

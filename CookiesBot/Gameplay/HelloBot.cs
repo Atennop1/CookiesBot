@@ -6,11 +6,11 @@ using Telegram.BotAPI.AvailableTypes;
 
 namespace CookiesBot.Gameplay
 {
-    public sealed class ExampleBot : ILoopObject
+    public sealed class HelloBot : ILoopObject
     {
         private readonly ITelegram _telegram;
 
-        public ExampleBot(ITelegram telegram) 
+        public HelloBot(ITelegram telegram) 
             => _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
 
         public void GetUpdate(IUpdateInfo updateInfo)
@@ -20,14 +20,14 @@ namespace CookiesBot.Gameplay
 
             var inlineKeyboardMarkup = new InlineKeyboardMarkup(new[]
             {
-                InlineButtonBuilder.SetCallbackData("Кнопка!", "send: Ты нажал на кнопку!")
+                InlineButtonBuilder.SetCallbackData("Посмотреть баланс", "send_balance")
             });
             
-            _telegram.SendMessage("Привет! Я - бот с печеньками!", (long)updateInfo.Message?.Chat.Id!, inlineKeyboardMarkup);
+            _telegram.SendMessage("Привет! Я - бот с печеньками!\nТы можешь посмотреть баланс, нажав на кнопку ниже", (long)updateInfo.Message?.Chat.Id!, inlineKeyboardMarkup);
         }
 
-        public UpdateType RequiredUpdateType 
-            => UpdateType.Message;
+        public TypeOfUpdate RequiredTypeOfUpdate 
+            => TypeOfUpdate.Message;
         
         public bool CanGetUpdate(IUpdateInfo updateInfo)
             => updateInfo.Message!.Text!.IsCommand("/start");

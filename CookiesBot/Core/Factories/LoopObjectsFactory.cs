@@ -1,22 +1,27 @@
 ﻿using CookiesBot.Gameplay;
 using CookiesBot.Loop;
 using CookiesBot.Telegram;
+using RelationalDatabasesViaOOP;
 
 namespace CookiesBot.Core
 {
     public sealed class LoopObjectsFactory : ILoopObjectsFactory
     {
         private readonly ITelegram _telegram;
+        private readonly IDatabase _database;
 
-        public LoopObjectsFactory(ITelegram telegram) 
-            => _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
+        public LoopObjectsFactory(ITelegram telegram, IDatabase database)
+        {
+            _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
+            _database = database ?? throw new ArgumentNullException(nameof(database));
+        }
 
         public List<ILoopObject> Create()
         {
             var loopObjects = new List<ILoopObject>
             {
-                new ExampleBot(_telegram),
-                new MessageSendingBot(_telegram)
+                new HelloBot(_telegram),
+                new BalanceBot(_telegram, _database)
             };
 
             return loopObjects;

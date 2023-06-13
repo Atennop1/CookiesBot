@@ -10,14 +10,24 @@ namespace CookiesBot.Loop
 
         public LibraryUpdateInfoAdapter(Update update) 
             => _update = update ?? throw new ArgumentNullException(nameof(update));
-
-        public UpdateType Type 
-            => _update.Type;
         
         public Message? Message 
             => _update.Message;
         
         public CallbackQuery? CallbackQuery 
             => _update.CallbackQuery;
+
+        public TypeOfUpdate Type
+        {
+            get
+            {
+                return _update.Type switch
+                {
+                    UpdateType.Message => TypeOfUpdate.Message,
+                    UpdateType.CallbackQuery => TypeOfUpdate.ButtonCallback,
+                    _ => throw new InvalidOperationException()
+                };
+            }
+        }
     }
 }

@@ -1,12 +1,10 @@
-﻿using Telegram.BotAPI.GettingUpdates;
-
-namespace CookiesBot.Loop
+﻿namespace CookiesBot.Loop
 {
     public interface IUsersLoopObjects
     {
-        bool IsLoopObjectsForUserExist(Update update);
+        bool IsLoopObjectsForUserExist(IUpdateInfo updateInfo);
         
-        List<ILoopObject> GetLoopObjectsOfUser(Update update);
-        void CreateLoopObjectsForNewUser(Update update);
+        List<ILoopObject> GetLoopObjectsOfUser(IUpdateInfo updateInfo);
+        void CreateLoopObjectsForNewUser(IUpdateInfo updateInfo);
     }
 }

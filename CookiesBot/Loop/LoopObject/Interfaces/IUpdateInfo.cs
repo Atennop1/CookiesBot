@@ -1,11 +1,10 @@
-﻿using Telegram.BotAPI;
-using Telegram.BotAPI.AvailableTypes;
+﻿using Telegram.BotAPI.AvailableTypes;
 
 namespace CookiesBot.Loop
 {
     public interface IUpdateInfo
     {
-        UpdateType Type { get; }
+        TypeOfUpdate Type { get; }
         Message? Message { get; }
         CallbackQuery? CallbackQuery { get; }
     }

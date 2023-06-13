@@ -1,5 +1,4 @@
-﻿using CookiesBot.Tools;
-using Telegram.BotAPI;
+﻿using Telegram.BotAPI;
 using Telegram.BotAPI.GettingUpdates;
 
 namespace CookiesBot.Loop

@@ -8,7 +8,7 @@
             => _value = value;
 
         public FarmingStatusValue()
-            => _value = FarmingStatus.Enabled;
+            => _value = FarmingStatus.Disabled;
 
         public void Set(FarmingStatus value)
             => _value = value;

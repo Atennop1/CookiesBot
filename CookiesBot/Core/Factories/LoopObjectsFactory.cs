@@ -18,10 +18,15 @@ namespace CookiesBot.Core
 
         public List<ILoopObject> Create()
         {
+            var farmingStatusValue = new FarmingStatusValue();
+            
             var loopObjects = new List<ILoopObject>
             {
                 new HelloBot(_telegram),
-                new BalanceBot(_telegram, _database)
+                new BalanceBot(_telegram, _database),
+                new FarmModeEnablingBot(_telegram, farmingStatusValue),
+                new FarmModeDisablingBot(_telegram, farmingStatusValue),
+                new CookieAdderBot(_telegram, _database, farmingStatusValue)
             };
 
             return loopObjects;

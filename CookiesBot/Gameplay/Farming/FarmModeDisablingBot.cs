@@ -23,11 +23,11 @@ namespace CookiesBot.Gameplay
             if (!CanGetUpdate(updateInfo))
                 throw new InvalidOperationException("Can't get update now");
 
-            _telegram.SendMessage("Включен режим отключен", updateInfo.Message!.From!.Id);
+            _telegram.SendMessage("Режим фермы отключен", updateInfo.Message!.From!.Id);
             _farmingStatusValue.Set(FarmingStatus.Disabled);
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 
-            => _farmingStatusValue.Get() == FarmingStatus.Enabled && updateInfo.Message!.Text!.IsCommand("/disabledFarmMode");
+            => _farmingStatusValue.Get() == FarmingStatus.Enabled && updateInfo.Message!.Text!.IsCommand("/disableFarmMode");
     }
 }

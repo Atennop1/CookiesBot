@@ -30,7 +30,7 @@ namespace CookiesBot.Gameplay
                 InlineButtonBuilder.SetCallbackData("Получить печеньку", "add_cookie")
             });
             
-            _telegram.SendMessage("Включен режим фермы\nЧтобы получить печеньку, нажмите на кнопку ниже\nЧтобы выйти из режима фермы напишите /disabledFarmMode", updateInfo.Message!.From!.Id, inlineKeyboardMarkup);
+            _telegram.SendMessage("Включен режим фермы\nЧтобы получить печеньку, нажмите на кнопку ниже\nЧтобы выйти из режима фермы напишите /disableFarmMode", updateInfo.Message!.From!.Id, inlineKeyboardMarkup);
             _farmingStatusValue.Set(FarmingStatus.Enabled);
         }
 

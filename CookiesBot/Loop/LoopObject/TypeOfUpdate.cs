@@ -3,7 +3,7 @@
     [Flags]
     public enum TypeOfUpdate
     {
-        Message,
-        ButtonCallback
+        Message = 1,
+        ButtonCallback = 2
     }
 }

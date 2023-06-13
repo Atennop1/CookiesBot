@@ -32,8 +32,8 @@ namespace CookiesBot.Gameplay
             cookiesCountTable.Load(cookiesCountReader);
             var userCookiesCount = (int)cookiesCountTable.Rows[0]["average_cookies_count"];
             
-            _database.SendNonQueryRequest($"UPDATE users SET average_cookies_count = {userCookiesCount + 1} WHERE average_cookies_count = {userCookiesCount}");
-            _telegram.SendMessage("+1 печенька!", updateInfo.Message!.From!.Id);
+            _database.SendNonQueryRequest($"UPDATE users SET average_cookies_count = {userCookiesCount + 1} WHERE user_id = {updateInfo.CallbackQuery!.From.Id}");
+            _telegram.SendMessage("+1 печенька!", updateInfo.CallbackQuery!.From.Id);
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 

@@ -26,7 +26,8 @@ namespace CookiesBot.Core
                 new BalanceBot(_telegram, _database),
                 new FarmModeEnablingBot(_telegram, farmingStatusValue),
                 new FarmModeDisablingBot(_telegram, farmingStatusValue),
-                new CookieAdderBot(_telegram, _database, farmingStatusValue)
+                new CookieAdderBot(_telegram, _database, farmingStatusValue),
+                new GoldenCookieAdderBot(_telegram, _database, farmingStatusValue)
             };
 
             return loopObjects;

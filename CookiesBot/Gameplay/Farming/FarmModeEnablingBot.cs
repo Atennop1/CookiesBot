@@ -25,12 +25,11 @@ namespace CookiesBot.Gameplay
             if (!CanGetUpdate(updateInfo))
                 throw new InvalidOperationException("Can't get update now");
 
-            var inlineKeyboardMarkup = new InlineKeyboardMarkup(new[]
-            {
-                InlineButtonBuilder.SetCallbackData("Получить печеньку", "add_cookie")
-            });
+            var inlineKeyboardMarkup = new InlineKeyboardMarkup(
+                new[] { InlineButtonBuilder.SetCallbackData("Получить обычную печеньку", "add_cookie") }, 
+                new[] { InlineButtonBuilder.SetCallbackData("Получить золотую печеньку", "add_golden_cookie") });
             
-            _telegram.SendMessage("Включен режим фермы\nЧтобы получить печеньку, нажмите на кнопку ниже\nЧтобы выйти из режима фермы напишите /disableFarmMode", updateInfo.Message!.From!.Id, inlineKeyboardMarkup);
+            _telegram.SendMessage("Включен режим фермы\nЗдесь вы можете получать обычные и золотые печеньки\nЧтобы выйти из режима фермы напишите /disableFarmMode", updateInfo.Message!.From!.Id, inlineKeyboardMarkup);
             _farmingStatusValue.Set(FarmingStatus.Enabled);
         }
 

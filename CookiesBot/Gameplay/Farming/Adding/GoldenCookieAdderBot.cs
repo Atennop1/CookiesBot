@@ -36,7 +36,7 @@ namespace CookiesBot.Gameplay
             if (timeOfLastGoldCookie.Add(TimeSpan.FromHours(1)) < DateTime.Now)
             {
                 _database.SendNonQueryRequest($"UPDATE users SET gold_cookies_count = {userCookiesCount + 1}, " +
-                    $"time_of_last_gold_cookie_getting = TIMESTAMP '{DateTime.Now}' " +
+                    $"time_of_last_gold_cookie_getting = TIMESTAMP '{DateTime.Now:yyyy-MM-dd H:mm:ss}' " +
                     $"WHERE user_id = {updateInfo.CallbackQuery!.From.Id}");
                 
                 _telegram.SendMessage("+1 золотая печенька!\nСледующую ты сможешь получить лишь через час", updateInfo.CallbackQuery!.From.Id);

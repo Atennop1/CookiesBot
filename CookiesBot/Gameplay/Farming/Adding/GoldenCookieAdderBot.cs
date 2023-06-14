@@ -10,6 +10,7 @@ namespace CookiesBot.Gameplay
         private readonly ITelegram _telegram;
         private readonly IDatabase _database;
         private readonly IFarmingStatusValue _farmingStatusValue;
+        private readonly RemainingTimeString _remainingTimeString = new();
 
         public GoldenCookieAdderBot(ITelegram telegram, IDatabase database, IFarmingStatusValue farmingStatusValue)
         {
@@ -30,10 +31,10 @@ namespace CookiesBot.Gameplay
             var cookiesCountTable = new DataTable();
             cookiesCountTable.Load(cookiesCountReader);
 
-            var timeOfLastGoldCookie = (DateTime)cookiesCountTable.Rows[0]["time_of_last_gold_cookie_getting"];
+            var timeOfLastGoldenCookie = (DateTime)cookiesCountTable.Rows[0]["time_of_last_gold_cookie_getting"];
             var userCookiesCount = (int)cookiesCountTable.Rows[0]["gold_cookies_count"];
 
-            if (timeOfLastGoldCookie.Add(TimeSpan.FromHours(1)) < DateTime.Now)
+            if (timeOfLastGoldenCookie.Add(TimeSpan.FromHours(1)) < DateTime.Now)
             {
                 _database.SendNonQueryRequest($"UPDATE users SET gold_cookies_count = {userCookiesCount + 1}, " +
                     $"time_of_last_gold_cookie_getting = TIMESTAMP '{DateTime.Now:yyyy-MM-dd H:mm:ss}' " +
@@ -43,8 +44,8 @@ namespace CookiesBot.Gameplay
                 return;
             }
             
-            var nextGoldenCookieTime = timeOfLastGoldCookie.Add(TimeSpan.FromHours(1)).Subtract(DateTime.Now).ToString();
-            _telegram.SendMessage($"До получения следующей золотой печеньки осталось {nextGoldenCookieTime}", updateInfo.CallbackQuery!.From.Id);
+            var timeForNextGoldenCookie = timeOfLastGoldenCookie.Add(TimeSpan.FromHours(1)).Subtract(DateTime.Now);
+            _telegram.SendMessage($"До получения следующей золотой печеньки осталось: {_remainingTimeString.GetFor(timeForNextGoldenCookie) }", updateInfo.CallbackQuery!.From.Id);
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 

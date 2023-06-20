@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6j87MYPy/4CUNKepO+UMNw5aLUxa3imvSVuG5J7JvE2gkLJK25Y9yfNamq3fvknRl14Zc5xsJU3of1Lwo4Tglw==",
+  "dgSpecHash": "TRsIZ552oO4+WyD1O2SsAU4fc3X47w5wTwvv0xW7nTfbQQ9fuEJtrVtB9Z3yQ7Biu2wss+ipcq2Kn0phKe5kFg==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\CookiesBot\\CookiesBot\\CookiesBot.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\npgsql\\8.0.0-preview.4\\npgsql.8.0.0-preview.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\nuget.build.tasks.pack\\5.2.0\\nuget.build.tasks.pack.5.2.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\relationaldatabasesviaoop\\1.1.0\\relationaldatabasesviaoop.1.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\relationaldatabasesviaoop\\1.2.1.1\\relationaldatabasesviaoop.1.2.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
@@ -19,7 +19,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'RelationalDatabasesViaOOP 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'RelationalDatabasesViaOOP 1.2.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "RelationalDatabasesViaOOP",
       "targetGraphs": [
         "net6.0"

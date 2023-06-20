@@ -1,5 +1,4 @@
-﻿using System.Data;
-using CookiesBot.Loop;
+﻿using CookiesBot.Loop;
 using CookiesBot.Telegram;
 using CookiesBot.Tools;
 using RelationalDatabasesViaOOP;
@@ -26,12 +25,9 @@ namespace CookiesBot.Gameplay
                 throw new InvalidOperationException("Can't get update");
 
             var userId = updateInfo.Type == TypeOfUpdate.Message ? updateInfo.Message!.From!.Id : updateInfo.CallbackQuery!.From.Id;
-            var userDataReader = _database.SendReaderRequest($"SELECT * FROM users WHERE user_id = {userId}");
-            
-            var userData = new DataTable();
-            userData.Load(userDataReader);
-            
-            var message = $"Баланс:\nОбычных печенек: {userData.Rows[0]["average_cookies_count"]}\nЗолотых печенек: {userData.Rows[0]["gold_cookies_count"]}";
+            var userDataTable = _database.SendReadingRequest($"SELECT * FROM users WHERE user_id = {userId}");
+
+            var message = $"Баланс:\nОбычных печенек: {userDataTable.Rows[0]["average_cookies_count"]}\nЗолотых печенек: {userDataTable.Rows[0]["gold_cookies_count"]}";
             _telegram.SendMessage(message, userId);
         }
 

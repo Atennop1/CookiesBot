@@ -9,7 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="Npgsql" Version="8.0.0-preview.4" />
-      <PackageReference Include="RelationalDatabasesViaOOP" Version="1.1.0" />
+      <PackageReference Include="RelationalDatabasesViaOOP" Version="1.2.1.1" />
       <PackageReference Include="Telegram.BotAPI" Version="6.7.2" />
     </ItemGroup>
 

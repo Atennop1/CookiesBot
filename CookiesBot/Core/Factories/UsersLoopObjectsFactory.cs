@@ -1,5 +1,4 @@
-﻿using System.Data;
-using CookiesBot.Loop;
+﻿using CookiesBot.Loop;
 using RelationalDatabasesViaOOP;
 
 namespace CookiesBot.Core
@@ -18,10 +17,7 @@ namespace CookiesBot.Core
         public IUsersLoopObjects Create()
         {
             var usersDictionary = new Dictionary<long, List<ILoopObject>>();
-            
-            var users = _database.SendReaderRequest("SELECT user_id FROM users");
-            var usersTable = new DataTable();
-            usersTable.Load(users);
+            var usersTable = _database.SendReadingRequest("SELECT user_id FROM users");
 
             for (var i = 0; i < usersTable.Rows.Count; i++)
                 usersDictionary.Add((long)usersTable.Rows[i]["user_id"], _loopObjectsFactory.Create());

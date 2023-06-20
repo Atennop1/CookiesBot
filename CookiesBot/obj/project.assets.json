@@ -57,7 +57,7 @@
           "buildCrossTargeting/_._": {}
         }
       },
-      "RelationalDatabasesViaOOP/1.1.0": {
+      "RelationalDatabasesViaOOP/1.2.1.1": {
         "type": "package",
         "dependencies": {
           "NuGet.Build.Tasks.Pack": "5.2.0"
@@ -272,15 +272,15 @@
         "nuget.build.tasks.pack.nuspec"
       ]
     },
-    "RelationalDatabasesViaOOP/1.1.0": {
-      "sha512": "3p23XnKI61A2cgOf4VRsCQnVPZriDwsmoc9HVCx/39n764NhaC0JlbEn9tad5fvKVM5gQPkWVFlrek5BymiJug==",
+    "RelationalDatabasesViaOOP/1.2.1.1": {
+      "sha512": "GcRD2Qa3+MpRr47bS+88umiiGTGeo4aSCHJS7t4aDZg9xP4nRu4goiZQboUeh9SgtWtQZ5r3sf+VOQ2shnw/AQ==",
       "type": "package",
-      "path": "relationaldatabasesviaoop/1.1.0",
+      "path": "relationaldatabasesviaoop/1.2.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net472/RelationalDatabasesViaOOP.dll",
-        "relationaldatabasesviaoop.1.1.0.nupkg.sha512",
+        "relationaldatabasesviaoop.1.2.1.1.nupkg.sha512",
         "relationaldatabasesviaoop.nuspec"
       ]
     },
@@ -431,7 +431,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Npgsql >= 8.0.0-preview.4",
-      "RelationalDatabasesViaOOP >= 1.1.0",
+      "RelationalDatabasesViaOOP >= 1.2.1.1",
       "Telegram.BotAPI >= 6.7.2"
     ]
   },
@@ -485,7 +485,7 @@
           },
           "RelationalDatabasesViaOOP": {
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.2.1.1, )"
           },
           "Telegram.BotAPI": {
             "target": "Package",
@@ -517,7 +517,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'RelationalDatabasesViaOOP 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'RelationalDatabasesViaOOP 1.2.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "RelationalDatabasesViaOOP",
       "targetGraphs": [
         "net6.0"

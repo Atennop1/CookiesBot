@@ -1,5 +1,4 @@
-﻿using System.Data;
-using CookiesBot.Loop;
+﻿using CookiesBot.Loop;
 using CookiesBot.Telegram;
 using RelationalDatabasesViaOOP;
 
@@ -27,10 +26,7 @@ namespace CookiesBot.Gameplay
             if (!CanGetUpdate(updateInfo))
                 throw new InvalidOperationException("Can't get update now");
             
-            var cookiesCountReader = _database.SendReaderRequest($"SELECT gold_cookies_count, time_of_last_gold_cookie_getting FROM users WHERE user_id = {updateInfo.CallbackQuery!.From.Id}");
-            var cookiesCountTable = new DataTable();
-            cookiesCountTable.Load(cookiesCountReader);
-
+            var cookiesCountTable = _database.SendReadingRequest($"SELECT gold_cookies_count, time_of_last_gold_cookie_getting FROM users WHERE user_id = {updateInfo.CallbackQuery!.From.Id}");
             var timeOfLastGoldenCookie = (DateTime)cookiesCountTable.Rows[0]["time_of_last_gold_cookie_getting"];
             var userCookiesCount = (int)cookiesCountTable.Rows[0]["gold_cookies_count"];
 

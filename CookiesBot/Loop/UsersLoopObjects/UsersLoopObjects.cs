@@ -36,10 +36,10 @@ namespace CookiesBot.Loop
                 throw new InvalidOperationException("Loop objects for this user already exist");
             
             if (updateInfo.Type == TypeOfUpdate.Message)
-                _usersLoopObjects.Add(updateInfo.Message!.Chat.Id, _loopObjectsFactory.Create());
+                _usersLoopObjects.Add(updateInfo.Message!.Chat.Id, _loopObjectsFactory.Create(updateInfo.Message!.Chat.Id));
             
             if (updateInfo.Type == TypeOfUpdate.ButtonCallback)
-                _usersLoopObjects.Add(updateInfo.CallbackQuery!.From.Id, _loopObjectsFactory.Create());
+                _usersLoopObjects.Add(updateInfo.CallbackQuery!.From.Id, _loopObjectsFactory.Create(updateInfo.CallbackQuery!.From.Id));
         }
     }
 }

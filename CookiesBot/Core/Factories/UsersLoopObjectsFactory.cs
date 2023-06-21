@@ -20,7 +20,7 @@ namespace CookiesBot.Core
             var usersTable = _database.SendReadingRequest("SELECT user_id FROM users");
 
             for (var i = 0; i < usersTable.Rows.Count; i++)
-                usersDictionary.Add((long)usersTable.Rows[i]["user_id"], _loopObjectsFactory.Create());
+                usersDictionary.Add((long)usersTable.Rows[i]["user_id"], _loopObjectsFactory.Create((long)usersTable.Rows[i]["user_id"]));
 
             var usersLoopObjects = new UsersLoopObjects(_loopObjectsFactory, usersDictionary);
             var usersLoopObjectsWithSaving = new UsersLoopObjectsWithSaving(usersLoopObjects, _database);

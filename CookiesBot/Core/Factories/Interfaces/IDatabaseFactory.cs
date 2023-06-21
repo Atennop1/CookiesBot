@@ -1,8 +1,9 @@
 ﻿using RelationalDatabasesViaOOP;
 
-namespace CookiesBot.Core;
-
-public interface IDatabaseFactory
+namespace CookiesBot.Core
 {
-    IDatabase Create();
+    public interface IDatabaseFactory
+    {
+        IDatabase Create();
+    }
 }

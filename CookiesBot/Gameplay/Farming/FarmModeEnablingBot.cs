@@ -9,12 +9,12 @@ namespace CookiesBot.Gameplay
     public sealed class FarmModeEnablingBot : ILoopObject
     {
         private readonly ITelegram _telegram;
-        private readonly IFarmingStatusValue _farmingStatusValue;
+        private readonly IScreenEnabled _screenEnabled;
 
-        public FarmModeEnablingBot(ITelegram telegram, IFarmingStatusValue farmingStatusValue)
+        public FarmModeEnablingBot(ITelegram telegram, IScreenEnabled screenEnabled)
         {
             _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
-            _farmingStatusValue = farmingStatusValue ?? throw new ArgumentNullException(nameof(farmingStatusValue));
+            _screenEnabled = screenEnabled ?? throw new ArgumentNullException(nameof(screenEnabled));
         }
 
         public TypeOfUpdate RequiredTypeOfUpdate 
@@ -30,10 +30,10 @@ namespace CookiesBot.Gameplay
                 new[] { InlineButtonBuilder.SetCallbackData("Получить золотую печеньку", "add_golden_cookie") });
             
             _telegram.SendMessage("Включен режим фермы\nЗдесь вы можете получать обычные и золотые печеньки\nЧтобы выйти из режима фермы напишите /disableFarmMode", updateInfo.Message!.From!.Id, inlineKeyboardMarkup);
-            _farmingStatusValue.Set(FarmingStatus.Enabled);
+            _screenEnabled.Set(true);
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 
-            => _farmingStatusValue.Get() == FarmingStatus.Disabled && updateInfo.Message!.Text!.IsCommand("/enableFarmMode");
+            => _screenEnabled.Get() == false && updateInfo.Message!.Text!.IsCommand("/enableFarmMode");
     }
 }

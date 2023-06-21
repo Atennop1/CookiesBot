@@ -8,14 +8,14 @@ namespace CookiesBot.Gameplay
     {
         private readonly ITelegram _telegram;
         private readonly IDatabase _database;
-        private readonly IFarmingStatusValue _farmingStatusValue;
+        private readonly IScreenEnabled _screenEnabled;
         private readonly RemainingTimeString _remainingTimeString = new();
 
-        public GoldenCookieAdderBot(ITelegram telegram, IDatabase database, IFarmingStatusValue farmingStatusValue)
+        public GoldenCookieAdderBot(ITelegram telegram, IDatabase database, IScreenEnabled screenEnabled)
         {
             _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
             _database = database ?? throw new ArgumentNullException(nameof(database));
-            _farmingStatusValue = farmingStatusValue ?? throw new ArgumentNullException(nameof(farmingStatusValue));
+            _screenEnabled = screenEnabled ?? throw new ArgumentNullException(nameof(screenEnabled));
         }
 
         public TypeOfUpdate RequiredTypeOfUpdate 
@@ -45,6 +45,6 @@ namespace CookiesBot.Gameplay
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 
-            => _farmingStatusValue.Get() == FarmingStatus.Enabled && updateInfo.CallbackQuery!.Data == "add_golden_cookie";
+            => _screenEnabled.Get() && updateInfo.CallbackQuery!.Data == "add_golden_cookie";
     }
 }

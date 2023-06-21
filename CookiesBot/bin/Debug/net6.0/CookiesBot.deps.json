@@ -9,7 +9,7 @@
       "CookiesBot/1.0.0": {
         "dependencies": {
           "Npgsql": "8.0.0-preview.4",
-          "RelationalDatabasesViaOOP": "1.1.0",
+          "RelationalDatabasesViaOOP": "1.2.1.1",
           "Telegram.BotAPI": "6.7.2"
         },
         "runtime": {
@@ -45,7 +45,7 @@
         }
       },
       "NuGet.Build.Tasks.Pack/5.2.0": {},
-      "RelationalDatabasesViaOOP/1.1.0": {
+      "RelationalDatabasesViaOOP/1.2.1.1": {
         "dependencies": {
           "NuGet.Build.Tasks.Pack": "5.2.0"
         },
@@ -136,12 +136,12 @@
       "path": "nuget.build.tasks.pack/5.2.0",
       "hashPath": "nuget.build.tasks.pack.5.2.0.nupkg.sha512"
     },
-    "RelationalDatabasesViaOOP/1.1.0": {
+    "RelationalDatabasesViaOOP/1.2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3p23XnKI61A2cgOf4VRsCQnVPZriDwsmoc9HVCx/39n764NhaC0JlbEn9tad5fvKVM5gQPkWVFlrek5BymiJug==",
-      "path": "relationaldatabasesviaoop/1.1.0",
-      "hashPath": "relationaldatabasesviaoop.1.1.0.nupkg.sha512"
+      "sha512": "sha512-GcRD2Qa3+MpRr47bS+88umiiGTGeo4aSCHJS7t4aDZg9xP4nRu4goiZQboUeh9SgtWtQZ5r3sf+VOQ2shnw/AQ==",
+      "path": "relationaldatabasesviaoop/1.2.1.1",
+      "hashPath": "relationaldatabasesviaoop.1.2.1.1.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",

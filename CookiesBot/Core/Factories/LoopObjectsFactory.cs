@@ -18,7 +18,7 @@ namespace CookiesBot.Core
 
         public List<ILoopObject> Create()
         {
-            var farmingStatusValue = new FarmingStatusValue();
+            var farmingStatusValue = new ScreenEnabled();
             
             var loopObjects = new List<ILoopObject>
             {

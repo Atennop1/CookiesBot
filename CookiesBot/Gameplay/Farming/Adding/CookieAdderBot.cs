@@ -8,13 +8,13 @@ namespace CookiesBot.Gameplay
     {
         private readonly ITelegram _telegram;
         private readonly IDatabase _database;
-        private readonly IScreenEnabled _screenEnabled;
+        private readonly IScreen _screen;
 
-        public CookieAdderBot(ITelegram telegram, IDatabase database, IScreenEnabled screenEnabled)
+        public CookieAdderBot(ITelegram telegram, IDatabase database, IScreen screen)
         {
             _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
             _database = database ?? throw new ArgumentNullException(nameof(database));
-            _screenEnabled = screenEnabled ?? throw new ArgumentNullException(nameof(screenEnabled));
+            _screen = screen ?? throw new ArgumentNullException(nameof(screen));
         }
 
         public TypeOfUpdate RequiredTypeOfUpdate 
@@ -33,6 +33,6 @@ namespace CookiesBot.Gameplay
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 
-            => _screenEnabled.Get() && updateInfo.CallbackQuery!.Data == "add_cookie";
+            => _screen.IsActive && updateInfo.CallbackQuery!.Data == "add_cookie";
     }
 }

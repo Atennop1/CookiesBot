@@ -7,12 +7,12 @@ namespace CookiesBot.Gameplay
     public sealed class FarmModeDisablingBot : ILoopObject
     {
         private readonly ITelegram _telegram;
-        private readonly IScreenEnabled _screenEnabled;
+        private readonly IScreen _screen;
 
-        public FarmModeDisablingBot(ITelegram telegram, IScreenEnabled screenEnabled)
+        public FarmModeDisablingBot(ITelegram telegram, IScreen screen)
         {
             _telegram = telegram ?? throw new ArgumentNullException(nameof(telegram));
-            _screenEnabled = screenEnabled ?? throw new ArgumentNullException(nameof(screenEnabled));
+            _screen = screen ?? throw new ArgumentNullException(nameof(screen));
         }
 
         public TypeOfUpdate RequiredTypeOfUpdate 
@@ -24,10 +24,10 @@ namespace CookiesBot.Gameplay
                 throw new InvalidOperationException("Can't get update now");
 
             _telegram.SendMessage("Режим фермы отключен", updateInfo.Message!.From!.Id);
-            _screenEnabled.Set(false);
+            _screen.Disable();
         }
 
         public bool CanGetUpdate(IUpdateInfo updateInfo) 
-            => _screenEnabled.Get() && updateInfo.Message!.Text!.IsCommand("/disableFarmMode");
+            => _screen.IsActive && updateInfo.Message!.Text!.IsCommand("/disableFarmMode");
     }
 }

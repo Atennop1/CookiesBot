@@ -18,7 +18,7 @@ namespace CookiesBot.Core
 
         public List<ILoopObject> Create(long userId)
         {
-            var screenEnabledFactory = new ScreenEnabledFactory(_database, userId);
+            var screenEnabledFactory = new ScreenFactory(_database, userId);
             var farmingScreenEnabled = screenEnabledFactory.Create();
             
             var loopObjects = new List<ILoopObject>

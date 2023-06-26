@@ -32,7 +32,7 @@
                 return false;
             
             var existingCell = _cells.Find(cell => cell.Item == addingCell.Item);
-            return existingCell != null && !existingCell.CanAddItems(addingCell.Count);
+            return existingCell == null || existingCell.CanAddItems(addingCell.Count);
         }
 
         public void Remove(ICell removingCell)
@@ -59,7 +59,7 @@
                 return false;
 
             var existingCell = _cells.Find(cell => cell.Item == removingCell.Item);
-            return !existingCell!.CanRemoveItems(removingCell.Count);
+            return existingCell!.CanRemoveItems(removingCell.Count);
         }
     }
 }

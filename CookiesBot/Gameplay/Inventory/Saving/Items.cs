@@ -17,7 +17,12 @@ namespace CookiesBot.Gameplay
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            return _items.IndexOf(item);
+            var existingItem = _items.Find(second => second.IsEquals(item));
+
+            if (existingItem == null)
+                throw new InvalidOperationException("Item does not exist");
+            
+            return _items.IndexOf(existingItem);
         }
     }
 }

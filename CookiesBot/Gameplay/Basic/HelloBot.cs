@@ -23,7 +23,7 @@ namespace CookiesBot.Gameplay
                 InlineButtonBuilder.SetCallbackData("Посмотреть баланс", "balance")
             });
             
-            _telegram.SendMessage("Привет! Я - бот с печеньками!\nТы можешь посмотреть баланс, нажав на кнопку ниже\nЧтобы начать получать печенье напиши /enableFarmMode", (long)updateInfo.Message?.Chat.Id!, inlineKeyboardMarkup);
+            _telegram.SendMessage("Привет! Я - бот с печеньками!\nТы можешь посмотреть баланс, нажав на кнопку ниже\nЧтобы начать получать печенье напиши /enableFarmMode", (long)updateInfo.Message?.From!.Id!, inlineKeyboardMarkup);
         }
 
         public TypeOfUpdate RequiredTypeOfUpdate 

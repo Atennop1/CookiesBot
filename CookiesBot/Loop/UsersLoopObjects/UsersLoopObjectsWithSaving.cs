@@ -22,7 +22,7 @@ namespace CookiesBot.Loop
         {
             var userId = updateInfo.Type switch
             {
-                TypeOfUpdate.Message => updateInfo.Message!.Chat.Id,
+                TypeOfUpdate.Message => updateInfo.Message!.From!.Id,
                 TypeOfUpdate.ButtonCallback => updateInfo.CallbackQuery!.From.Id,
                 _ => 0L
             };

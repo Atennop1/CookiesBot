@@ -9,6 +9,7 @@ namespace CookiesBot.Core
     {
         private readonly ITelegram _telegram;
         private readonly IDatabase _database;
+        private readonly IItems _items = new ItemsFactory().Create();
 
         public LoopObjectsFactory(ITelegram telegram, IDatabase database)
         {
@@ -20,6 +21,7 @@ namespace CookiesBot.Core
         {
             var screenEnabledFactory = new ScreenFactory(_database, userId);
             var farmingScreenEnabled = screenEnabledFactory.Create();
+            var inventory = new InventoryWithSaving(new Inventory(), _database, _items, userId);
             
             var loopObjects = new List<ILoopObject>
             {
@@ -28,7 +30,8 @@ namespace CookiesBot.Core
                 new FarmModeEnablingBot(_telegram, farmingScreenEnabled),
                 new FarmModeDisablingBot(_telegram, farmingScreenEnabled),
                 new CookieAdderBot(_telegram, _database, farmingScreenEnabled),
-                new GoldenCookieAdderBot(_telegram, _database, farmingScreenEnabled)
+                new GoldenCookieAdderBot(_telegram, _database, farmingScreenEnabled),
+                new ShowInventoryBot(_telegram, inventory)
             };
 
             return loopObjects;

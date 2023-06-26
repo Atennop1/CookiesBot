@@ -16,7 +16,7 @@ namespace CookiesBot.Gameplay
             _items = items ?? throw new ArgumentNullException(nameof(items));
             _userId = userId;
 
-            var loadedCells = _database.SendReadingRequest($"SELECT * FROM users_items WHERE user_id {_userId}");
+            var loadedCells = _database.SendReadingRequest($"SELECT * FROM users_items WHERE user_id = {_userId}");
             
             for (var i = 0; i < loadedCells.Rows.Count; i++)
                 _inventory.Add(new Cell(_items.GetById((int)loadedCells.Rows[i]["item_id"]), (int)loadedCells.Rows[i]["count_of_items"]));

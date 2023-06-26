@@ -5,7 +5,7 @@
         public IItem Item { get; }
         public int Count { get; private set; }
 
-        public Cell(IItem item, int count)
+        public Cell(IItem item, int count = 1)
         {
             Item = item ?? throw new ArgumentNullException(nameof(item));
             Count = count;

@@ -1,8 +1,7 @@
 ﻿namespace CookiesBot.Gameplay
 {
-    public interface IInventory
+    public interface IInventory : IReadOnlyInventory
     {
-        IReadOnlyList<IReadOnlyCell> Cells { get; }
         void Add(ICell addingCell);
         void Remove(ICell removingCell);
     }

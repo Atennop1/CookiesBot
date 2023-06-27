@@ -4,6 +4,5 @@
     {
         string Name { get; }
         string Description { get; }
-        int Cost { get; }
     }
 }

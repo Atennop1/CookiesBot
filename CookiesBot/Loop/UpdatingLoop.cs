@@ -30,6 +30,9 @@ namespace CookiesBot.Loop
                 {
                     var updateInfo = new LibraryUpdateInfoAdapter(update);
                    
+                    if (updateInfo.Type == TypeOfUpdate.Unknown)
+                        continue;
+                    
                     if (!_usersLoopObjects.IsLoopObjectsForUserExist(updateInfo))
                         _usersLoopObjects.CreateLoopObjectsForNewUser(updateInfo);
 

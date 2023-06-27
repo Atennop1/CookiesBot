@@ -16,7 +16,8 @@ namespace CookiesBot.Telegram
             if (text == null)
                 throw new ArgumentNullException(nameof(text));
 
-            _client.SendMessage(text: text, chatId: id, replyMarkup: replyMarkup);
+            try { _client.SendMessage(text: text, chatId: id, replyMarkup: replyMarkup); }
+            catch { /*ignored*/ }
         }
     }
 }
